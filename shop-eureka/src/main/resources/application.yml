@@ -1,0 +1,17 @@
+server:
+    port: 10001
+
+spring:
+  application:
+    name: mall-eureka
+
+eureka:
+  instance:
+    hostname: 192.168.1.67
+  client:
+    serviceUrl.defaultZone: http://192.168.1.67:${server.port}/eureka
+    register-with-eureka: false
+    fetch-registry: false
+
+
+
