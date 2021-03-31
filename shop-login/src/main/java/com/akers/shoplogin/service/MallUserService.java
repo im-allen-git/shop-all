@@ -2,6 +2,7 @@ package com.akers.shoplogin.service;
 
 import com.akers.shoplogin.dao.MallUserDao;
 import com.akers.shoplogin.pojo.MallUser;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,19 +37,14 @@ public class MallUserService {
 
     public void updateUser(String id, MallUser user) {
         mallUserDao.findById(id).ifPresent(u -> {
-            u.setBirthday(user.getBirthday());
-            u.setEmail(user.getEmail());
-            u.setPassword(user.getPassword());
-            u.setPhone(user.getPhone());
-            u.setToken(user.getToken());
+            BeanUtils.copyProperties(user, u);
+            u.setId(id);
             mallUserDao.save(u);
         });
     }
 
     public void deleteUser(String id) {
-        this.mallUserDao.findById(id).ifPresent(u -> {
-            this.mallUserDao.delete(u);
-        });
+        this.mallUserDao.findById(id).ifPresent(u -> this.mallUserDao.delete(u));
     }
 
 }
