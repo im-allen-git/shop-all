@@ -1,7 +1,6 @@
 package com.akers.shoporder.pojo;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
@@ -12,9 +11,8 @@ import java.util.List;
  * @date:2021-03-24
  */
 @Data
-public class OrderInfo {
+public class OrderInfoShow {
 
-    @Id
     private String id;
     private String userId;
     private Double productCost;
@@ -23,5 +21,10 @@ public class OrderInfo {
     private Double freight;
     private String transportationMode;
     private String addressId;
+
+    private AddressInfo addressInfo;
+
+    private List<OrderDt> dtList;
+
 
 }

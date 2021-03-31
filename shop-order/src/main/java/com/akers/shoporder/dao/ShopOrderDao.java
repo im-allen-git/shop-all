@@ -1,6 +1,8 @@
 package com.akers.shoporder.dao;
 
-import com.akers.shoporder.ShopOrder;
+import com.akers.shoporder.pojo.OrderInfo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Repository;
  * @date:2021-03-22
  */
 @Repository
-public interface ShopOrderDao extends MongoRepository<ShopOrder, String> {
+public interface ShopOrderDao extends MongoRepository<OrderInfo, String> {
+
+    Page<OrderInfo> findByUserId(String userId , Pageable pageable);
 
 }
