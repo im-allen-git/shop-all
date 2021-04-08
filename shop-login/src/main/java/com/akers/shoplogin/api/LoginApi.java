@@ -36,7 +36,7 @@ public class LoginApi {
 
 
     @ApiOperation(value = "获取用户列表")
-    @GetMapping("/list/")
+    @GetMapping("/list")
     public CommonPage<MallUser> list() {
         List<MallUser> users = userService.getUsers();
         return CommonPage.restPage(users);
